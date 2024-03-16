@@ -32,12 +32,13 @@ firstLetter = divNodes[0].childNodes[0].classList.add('active')
 
 function handleTyping(e){
     if(nodeCount >= divNodes.length){
+        e.preventDefault();
         showResult()
 
     }
     //starting the timer.....
     if(!isTimerStarted){
-        startTimer();
+        startTimer(e);
         isTimerStarted = !isTimerStarted
     }
 
@@ -69,10 +70,10 @@ function handleTyping(e){
 document.addEventListener('keydown',handleTyping)
 
 let TimeId = null
-function startTimer(){
+function startTimer(e){
     TimeId = setInterval(()=>{
             if(sec == 0) {
-                showResult();
+                showResult(e);
             }
             timerElement.innerText = `00:${sec < 10 ? '0'+sec:sec}`;
             sec--;
@@ -87,7 +88,8 @@ function stopTimer(){
     clearInterval(TimeId)
 }
 
-function showResult(){
+function showResult(e){
+    e.preventDefault();
     stopTimer();
     let resultElement = document.querySelector('.output_area-wrapper div span');
     let accuracy = Math.floor((totatNoOfCorrectLetter /noOfLettersClicked) *100);
