@@ -1,0 +1,115 @@
+body{
+    margin: 0;
+    overflow-x: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #323437
+}
+
+.container h1{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #e2b714;
+}
+
+.output_area-wrapper{
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* .output_area-wrapper button{
+    background-color: #e2b714;
+    border: 1px solid #e2b714;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    margin-left: 50px;
+} */
+
+.output_area-wrapper button:hover{
+    border: 1px solid #e2b714;
+    background-color: #323437;
+    color: white;
+}
+
+.timer{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #e2b714;
+}
+
+.output_area-wrapper div{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #e2b714;
+    margin-left: 50px;
+}
+
+.typing_area-wrapper{
+    align-items: center;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.typing_area-wrapper > div{
+    margin: 0 5px 0 5px;
+    font-size: 2.2rem;
+    
+}
+
+.typing_area-wrapper div letter{
+    color:#d1d0c5;
+    margin-left: 5px;
+}
+
+.active{
+    position: relative;
+}
+
+.active::before{
+    content: '';
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    background-color: #e2b714;
+    margin-left: -4px;
+    animation: slide 0.3s ease,blink 1s ease-in infinite;
+}
+
+@keyframes slide{
+    from{
+        transform: translateX(-15px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes blink{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
