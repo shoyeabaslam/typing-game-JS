@@ -6,8 +6,8 @@ let timerElement = document.querySelector('.timer');
 let textAreaElement = document.querySelector('.typing_area-wrapper')
 
 let isTimerStarted = false;
-let sec = 29;
-
+let sec = 5;
+let isEnd = false;
 
 textArray.forEach((words)=>{
     let letters = words.split('');
@@ -31,14 +31,14 @@ let totatNoOfCorrectLetter = 0;
 firstLetter = divNodes[0].childNodes[0].classList.add('active')
 
 function handleTyping(e){
-    if(nodeCount >= divNodes.length){
-        e.preventDefault();
+    if(nodeCount >= divNodes.length || isEnd){
         showResult()
-
+        return;
     }
+    console.log(e.key)
     //starting the timer.....
     if(!isTimerStarted){
-        startTimer(e);
+        startTimer();
         isTimerStarted = !isTimerStarted
     }
 
@@ -70,10 +70,11 @@ function handleTyping(e){
 document.addEventListener('keydown',handleTyping)
 
 let TimeId = null
-function startTimer(e){
+function startTimer(){
     TimeId = setInterval(()=>{
             if(sec == 0) {
-                showResult(e);
+                isEnd = !isEnd;
+                showResult();
             }
             timerElement.innerText = `00:${sec < 10 ? '0'+sec:sec}`;
             sec--;
@@ -88,8 +89,7 @@ function stopTimer(){
     clearInterval(TimeId)
 }
 
-function showResult(e){
-    e.preventDefault();
+function showResult(){
     stopTimer();
     let resultElement = document.querySelector('.output_area-wrapper div span');
     let accuracy = Math.floor((totatNoOfCorrectLetter /noOfLettersClicked) *100);
