@@ -6,7 +6,7 @@ let timerElement = document.querySelector('.timer');
 let textAreaElement = document.querySelector('.typing_area-wrapper')
 
 let isTimerStarted = false;
-let sec = 5;
+let sec = 30;
 let isEnd = false;
 
 textArray.forEach((words)=>{
